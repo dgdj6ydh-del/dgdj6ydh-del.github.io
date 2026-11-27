@@ -9,25 +9,23 @@
 <link rel="apple-touch-icon" href="icon-192.png">
 <title>Тапалка</title>
 <style>
-:root{--bg:#1c0b3a;--card:#2a1259;--panel:rgba(74,42,138,.35);--line:rgba(155,93,229,.35);--accent:#9b5de5;--pink:#e85dc4;--text:#f3e8ff;--gold:#ffd86b;--muted:#a994d6;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c0b3a}}
-:root[data-theme="dark"]{--bg:#1c0b3a}
+:root{--bg:#1c0b3a;--card:#2a1259;--panel:rgba(74,42,138,.35);--line:rgba(155,93,229,.35);--accent:#9b5de5;--pink:#e85dc4;--text:#f3e8ff;--gold:#ffd86b;--muted:#a994d6;--card2:#1f0d44;--g1:#4a2a8a;--g2:#5b1f7a;--t1:#d6a5ff;--t2:#8a3df0;--t3:#5b21b6;--rgb:155,93,229;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;color:var(--text);font-family:system-ui,"Segoe UI",Roboto,sans-serif;background:radial-gradient(ellipse at 20% 0,#4a2a8a 0,transparent 55%),radial-gradient(ellipse at 90% 100%,#5b1f7a 0,transparent 50%),var(--bg);background-attachment:fixed;-webkit-tap-highlight-color:transparent}
+body{margin:0;min-height:100vh;color:var(--text);font-family:system-ui,"Segoe UI",Roboto,sans-serif;background:radial-gradient(ellipse at 20% 0,var(--g1) 0,transparent 55%),radial-gradient(ellipse at 90% 100%,var(--g2) 0,transparent 50%),var(--bg);background-attachment:fixed;-webkit-tap-highlight-color:transparent}
 button{font-family:inherit;color:inherit}
 .wrap{max-width:480px;margin:0 auto;padding:0 14px 20px}
-.top{background:linear-gradient(var(--card),#1f0d44);border-radius:0 0 28px 28px;padding:10px 14px 14px;text-align:center;z-index:5}
+.top{background:linear-gradient(var(--card),var(--card2));border-radius:0 0 28px 28px;padding:10px 14px 14px;text-align:center;z-index:5}
 @media (min-height:760px){.top{position:sticky;top:env(safe-area-inset-top,0px)}body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--card);z-index:10}}
 .hd{display:flex;justify-content:space-between;align-items:center}
-.hd b{letter-spacing:.3em;font-size:.7rem;color:var(--muted);margin:0 auto}
-#pbtn{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:4px 10px;font-size:.75rem;cursor:pointer}
-#score{font-size:2.8rem;font-weight:900;color:var(--gold);line-height:1.1}
+.hd b{flex:1;text-align:center;letter-spacing:.3em;font-size:.7rem;color:var(--muted);margin:0 auto}
+#pbtn,#sbtn{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:4px 10px;font-size:.75rem;cursor:pointer}
+#score{font-size:clamp(1.9rem,9vw,2.8rem);font-weight:900;color:var(--gold);line-height:1.1}
 .cap{font-size:.7rem;color:var(--muted);margin-bottom:6px}
-.pills{display:flex;gap:8px;justify-content:center;margin-bottom:10px}
+.pills{flex-wrap:wrap;display:flex;gap:8px;justify-content:center;margin-bottom:10px}
 .pill{background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:20px;padding:5px 12px;font-size:.8rem}
 .pill b{margin-left:4px}
-#tap{width:150px;height:150px;border:0;border-radius:50%;font-size:1.7rem;font-weight:900;color:#fff;cursor:pointer;touch-action:manipulation;user-select:none;-webkit-user-select:none;background:radial-gradient(circle at 35% 28%,#d6a5ff,#8a3df0 55%,#5b21b6);box-shadow:0 0 0 8px rgba(155,93,229,.18),0 0 40px rgba(155,93,229,.6);transition:transform .05s}
+#tap{width:150px;height:150px;border:0;border-radius:50%;font-size:1.7rem;font-weight:900;color:#fff;cursor:pointer;touch-action:manipulation;user-select:none;-webkit-user-select:none;background:radial-gradient(circle at 35% 28%,var(--t1),var(--t2) 55%,var(--t3));box-shadow:0 0 0 8px rgba(var(--rgb),.18),0 0 40px rgba(var(--rgb),.6);transition:transform .05s}
 #tap:active{transform:scale(.95)}
 .g{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);margin:12px 4px 4px}
 .g b{color:var(--gold)}
@@ -42,7 +40,7 @@ button{font-family:inherit;color:inherit}
 .t{flex:1;min-width:0;font-size:.95rem;line-height:1.35}
 .t small{display:block;color:var(--muted);font-size:.78rem}
 .lv{background:rgba(255,216,107,.15);color:var(--gold);border-radius:8px;padding:1px 6px;font-size:.7rem;margin-left:4px}
-.buy{width:108px;flex:none;border:1px solid var(--line);border-radius:12px;padding:8px 4px;background:rgba(0,0,0,.35);color:var(--muted);cursor:pointer;touch-action:manipulation}
+.buy{width:118px;flex:none;border:1px solid var(--line);border-radius:12px;padding:8px 4px;background:rgba(0,0,0,.35);color:var(--muted);cursor:pointer;touch-action:manipulation}
 .buy b{display:block;font-size:.95rem}.buy small{font-size:.68rem}
 .buy.can{background:linear-gradient(135deg,var(--accent),var(--pink));color:#fff;border-color:transparent}
 .lock{opacity:.6}
@@ -50,9 +48,9 @@ button{font-family:inherit;color:inherit}
 #reset{display:block;margin:10px auto;background:none;border:0;color:var(--muted);font-size:.8rem;padding:8px;cursor:pointer}
 .bar2{height:6px;border-radius:3px;background:rgba(0,0,0,.4);margin-top:6px;overflow:hidden}.bar2 div{height:100%;background:var(--accent)}
 .qd{font-size:.78rem;color:var(--muted);margin:0 2px 10px}
-#pf{display:none;position:fixed;inset:0;background:rgba(10,3,25,.8);z-index:40;padding:calc(20px + env(safe-area-inset-top,0px)) 16px 20px}
-#pf .box{max-width:420px;margin:auto;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px}
-#pf h3{margin:0 0 10px}
+#pf,#st{display:none;position:fixed;inset:0;background:rgba(10,3,25,.8);z-index:40;padding:calc(20px + env(safe-area-inset-top,0px)) 16px 20px}
+#pf .box,#st .box{max-width:420px;margin:auto;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px}
+#pf h3,#st h3{margin:0 0 10px}
 .pr{display:flex;gap:8px;margin-bottom:8px}
 .pr .buy{width:auto;flex:1;text-align:left;padding:10px;font-weight:700}
 .pr .x{width:70px;text-align:center}
@@ -61,23 +59,45 @@ button{font-family:inherit;color:inherit}
 #win{display:none;position:fixed;left:14px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));max-width:452px;margin:auto;background:var(--gold);color:#2b1055;padding:14px;border-radius:14px;text-align:center;font-weight:700;z-index:50}
 .pop{position:fixed;pointer-events:none;color:var(--gold);font-weight:800;transform:translate(-50%,-50%);animation:up .8s forwards;z-index:20}
 @keyframes up{to{transform:translate(-50%,-180%);opacity:0}}
+.sk{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:6px 0 14px}
+.swatch{border:2px solid transparent;border-radius:12px;height:46px;color:#fff;font-weight:700;font-size:.78rem;text-shadow:0 1px 3px rgba(0,0,0,.6);cursor:pointer;touch-action:manipulation}
+.swatch.on{border-color:#fff}
+.set{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 0}
+.set small{display:block;color:var(--muted);font-size:.75rem;margin-top:2px}
+.sw{width:52px;height:30px;flex:none;border-radius:15px;border:1px solid var(--line);background:rgba(0,0,0,.4);position:relative;cursor:pointer}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:var(--muted);transition:.15s}
+.sw.on{background:var(--accent)}.sw.on::after{left:25px;background:#fff}
+html.app,html.app body{overscroll-behavior:none}
+html.app body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+html.app input{-webkit-user-select:text;user-select:text}
+html.nozoom,html.nozoom body{touch-action:pan-y}
+.set.col{display:block}
+input[type=range]{width:100%;accent-color:var(--accent);margin:8px 0 0}
+#st .box{max-height:calc(100vh - 60px);overflow-y:auto}
+#tabs button{flex:1}
+#cmb{margin:0 auto 8px;max-width:260px}
+#cmbt{font-size:.78rem;font-weight:700;color:var(--muted);min-height:1.1em}
+#cmbf{height:100%;width:0;background:var(--gold)}
+#bk{width:100%;margin-top:6px;background:rgba(0,0,0,.35);border:1px solid var(--line);border-radius:12px;padding:8px;color:var(--text);font-size:.8rem}
+html.app textarea{-webkit-user-select:text;user-select:text}
 </style>
 </head>
 <body>
 <div class="wrap">
  <div class="top">
-  <div class="hd"><button id="pbtn" type="button">👤 Игрок</button><b>ТАПАЛКА</b><span style="width:70px"></span></div>
+  <div class="hd"><button id="pbtn" type="button">👤 Игрок</button><b>ТАПАЛКА</b><button id="sbtn" type="button">⚙️</button></div>
   <div id="score">0</div><div class="cap">кубли</div>
   <div class="pills"><div class="pill">👆 за тап<b id="pt">1</b></div><div class="pill">⚡ в сек<b id="ps">0</b></div></div>
+  <div id="cmb"><div id="cmbt"></div><div class="bar" style="height:5px;margin-top:3px"><div id="cmbf"></div></div></div>
   <button id="tap" type="button">ТАП!</button>
   <div class="g"><span id="goal"></span><b id="pct">0%</b></div>
   <div class="bar"><div id="fill"></div></div>
  </div>
  <div class="tabs">
-  <div class="seg" id="tabs"><button class="on" data-t="up" type="button">Улучшения</button><button data-t="qs" type="button">Задания</button></div>
-  <div class="seg" id="mul"><button class="on" data-m="1" type="button">×1</button><button data-m="10" type="button">×10</button><button data-m="0" type="button">Макс</button></div>
+  <div class="seg" id="tabs" style="width:100%"><button class="on" data-t="up" type="button">Улучшения</button><button data-t="qs" type="button">Задания</button><button data-t="lb" type="button">Лидеры</button></div>
  </div>
- <div id="up"><div id="shop"></div><div class="row lock" id="lk"><div class="ic">🔒</div><div class="t"><b>???</b><small id="lkt"></small></div></div><div class="more" id="more"></div></div>
+ <div id="up"><div style="display:flex;justify-content:flex-end;margin-bottom:10px"><div class="seg" id="mul"><button class="on" data-m="1" type="button">×1</button><button data-m="10" type="button">×10</button><button data-m="0" type="button">Макс</button></div></div><div id="shop"></div><div class="row lock" id="lk"><div class="ic">🔒</div><div class="t"><b>???</b><small id="lkt"></small></div></div><div class="more" id="more"></div></div>
+ <div id="lb" style="display:none"><div class="qd" id="lbs"></div><div class="pr"><input id="nick" maxlength="16" placeholder="Ник для рейтинга"><button class="buy can" id="nsave" type="button" style="width:96px">Сохранить</button></div><div id="ll"></div></div>
  <div id="qs" style="display:none"><div class="qd" id="qd"></div><div id="ql"></div></div>
  <button id="reset" type="button">Сбросить прогресс</button>
 </div>
@@ -87,20 +107,51 @@ button{font-family:inherit;color:inherit}
  <p class="note">Профили и сохранения хранятся в браузере этого телефона. Вход через Google и облачные сохранения требуют отдельного сервера, пока их тут нет.</p>
  <button class="buy" id="pclose" type="button" style="width:100%;margin-top:10px">Закрыть</button>
 </div></div>
+<div id="st"><div class="box">
+ <h3>Настройки</h3>
+ <b style="font-size:.9rem">Цвет интерфейса</b>
+ <div class="sk" id="sk"></div>
+ <div class="set"><div><b>Масштабирование пальцами</b><small>Выключено: щипок и двойной тап не увеличивают экран</small></div><button class="sw" id="zsw" type="button"></button></div>
+ <div class="set"><div><b>Режим приложения</b><small>Не выделяется текст, нет обновления свайпом вниз и меню по долгому нажатию</small></div><button class="sw" id="asw" type="button"></button></div>
+ <div class="set col"><b>Музыка</b><small>Начнёт играть после первого нажатия</small><input id="mv" type="range" min="0" max="100"></div>
+ <div class="set col"><b>Звуки нажатий</b><input id="sv" type="range" min="0" max="100"></div>
+ <b style="font-size:.9rem;display:block;margin-top:6px">Облако (Google)</b>
+ <div class="qd" id="cs" style="margin:6px 0"></div>
+ <button class="buy can" id="gbtn" type="button" style="width:100%">Войти через Google</button>
+ <div class="pr"><button class="buy" id="gsync" type="button" style="display:none">Синхронизировать</button><button class="buy" id="gout" type="button" style="display:none">Выйти</button></div>
+ <b style="font-size:.9rem;display:block;margin-top:14px">Код сохранения</b>
+ <textarea id="bk" rows="3" placeholder="Сюда вставь код, чтобы загрузить прогресс"></textarea>
+ <div class="pr" style="margin-top:6px"><button class="buy" id="bexp" type="button">Получить код</button><button class="buy" id="bimp" type="button">Загрузить код</button></div>
+ <div class="qd" id="bmsg"></div>
+ <button class="buy" id="sclose" type="button" style="width:100%;margin-top:10px">Закрыть</button>
+</div></div>
 <div id="win">Ты заработал 1 млрд кублей и прошёл игру! 🎉<br>Можно играть дальше (нажми, чтобы закрыть)</div>
+<script src="firebase-config.js"></script>
 <script>
-const GOAL=1e9,G=1.15,PK="tapalka-profiles",$=id=>document.getElementById(id);
+const GOAL=1e9,GOAL2=1e18,G=1.15,PK="tapalka-profiles",$=id=>document.getElementById(id);
 // [id, название, иконка, цена, +за тап, +в секунду]
-const U=[["finger","Сильный палец","👆",10,1,0],["auto","Авто-тапер","⏱️",25,0,1],["glove","Мега-перчатка","🧤",200,4,0],["robot","Робот-тапер","🤖",750,0,5],["hand","Рука гиганта","✋",3e3,15,0],["factory","Фабрика тапов","🏭",1e4,0,25],["titan","Титановая рука","🦾",4e4,60,0],["plant","Завод","🏗️",15e4,0,150],["laser","Лазерный палец","🔦",75e4,400,0],["city","Город тапов","🌆",3e6,0,1200],["cosmic","Космический тап","🚀",15e6,3e3,0],["planet","Планета-тапер","🪐",6e7,0,9e3],["universe","Тап вселенной","🌌",2e8,25e3,0],["galaxy","Галактика тапов","✨",4e8,0,6e4]];
+const U=[["finger","Сильный палец","👆",10,1,0],["auto","Авто-тапер","⏱️",25,0,1],["glove","Мега-перчатка","🧤",200,4,0],["robot","Робот-тапер","🤖",750,0,5],["hand","Рука гиганта","✋",3e3,15,0],["factory","Фабрика тапов","🏭",1e4,0,25],["titan","Титановая рука","🦾",4e4,60,0],["plant","Завод","🏗️",15e4,0,150],["laser","Лазерный палец","🔦",75e4,400,0],["city","Город тапов","🌆",3e6,0,1200],["cosmic","Космический тап","🚀",15e6,3e3,0],["planet","Планета-тапер","🪐",6e7,0,9e3],["universe","Тап вселенной","🌌",2e8,25e3,0],["galaxy","Галактика тапов","✨",4e8,0,6e4],
+["drill","Бур, пробивающий небеса","🌀",3.6e8,12e4,0,"Спиральная сила"],
+["quant","Квантовая ферма","⚛️",1.2e9,0,4e5],
+["hole","Чёрная дыра","🕳️",4.5e9,1.2e6,0],
+["dyson","Сфера Дайсона","☀️",1.8e10,0,4.5e6],
+["reactor","Тап-реактор","🔮",9e10,2e7,0],
+["cluster","Скопление галактик","🌠",3.6e11,0,7e7],
+["thread","Нить вселенной","🧵",1.8e12,3e8,0],
+["multi","Мультивселенная","🌐",9e12,0,1.2e9],
+["creator","Рука Творца","🖐️",6e13,8e9,0],
+["bubble","Пузырь времени","⏳",3e14,0,3.5e10],
+["timeless","Тап вне времени","♾️",2.4e15,2.5e11,0],
+["source","Источник кублей","💎",1.5e16,0,1.5e12]];
 let P,s,mult=1;
 const lsGet=k=>{try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}};
 const lsSet=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
-function fmt(n){n=Math.floor(n);if(n>=1e9)return(n/1e9).toFixed(2)+" млрд";if(n>=1e6)return(n/1e6).toFixed(2)+" млн";return String(n).replace(/\B(?=(\d{3})+(?!\d))/g," ")}
+function fmt(n){n=Math.floor(n);const T=[[1e18,"квнтлн"],[1e15,"квдрлн"],[1e12,"трлн"],[1e9,"млрд"],[1e6,"млн"]];for(const[v,w]of T)if(n>=v)return(n/v).toFixed(2)+" "+w;return String(n).replace(/\B(?=(\d{3})+(?!\d))/g," ")}
 const today=()=>{const d=new Date();return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()};
-function blank(){const o={score:0,taps:0,total:0,won:false,lv:{},q:null};U.forEach(u=>o.lv[u[0]]=0);return o}
+function blank(){const o={score:0,taps:0,total:0,won:false,won2:false,lv:{},q:null};U.forEach(u=>o.lv[u[0]]=0);return o}
 function checkQ(){
  if(s.q&&s.q.d===today())return;
- const t=Math.max(0,Math.min(8,Math.floor(Math.log10(s.total+10))-1)),R=Math.max(50,Math.round(1.5*Math.pow(10,t)));
+ const t=Math.max(0,Math.min(16,Math.floor(Math.log10(s.total+10))-1)),R=Math.max(50,Math.round(1.5*Math.pow(10,t)));
  s.q={d:today(),taps:0,earned:0,bought:0,items:[
   {k:"taps",tg:40+30*t,rw:R,done:false},
   {k:"earned",tg:Math.max(100,5*Math.pow(10,t)),rw:2*R,done:false},
@@ -108,7 +159,7 @@ function checkQ(){
 }
 function loadP(id){
  const d=lsGet("tapalka-v2-"+id);s=blank();
- if(d){s.score=+d.score||0;s.taps=+d.taps||0;s.total=Math.max(+d.total||0,s.score);s.won=!!d.won;U.forEach(u=>s.lv[u[0]]=+(d.lv&&d.lv[u[0]])||0);s.q=d.q||null}
+ if(d){s.score=+d.score||0;s.taps=+d.taps||0;s.total=Math.max(+d.total||0,s.score);s.won=!!d.won;s.won2=!!d.won2;U.forEach(u=>s.lv[u[0]]=+(d.lv&&d.lv[u[0]])||0);s.q=d.q||null}
  checkQ();
 }
 function save(){lsSet("tapalka-v2-"+P.cur,s)}
@@ -132,33 +183,33 @@ function plan(u){
 const rows={};
 U.forEach(u=>{
  const r=document.createElement("div");r.className="row";
- r.innerHTML='<div class="ic">'+u[2]+'</div><div class="t"></div><button class="buy" type="button"></button>';
- r.querySelector("button").addEventListener("click",()=>{const pl=plan(u);if(pl.ok){s.score-=pl.c;s.lv[u[0]]+=pl.n;s.q.bought+=pl.n;refresh();save()}});
+ r.innerHTML='<div class="ic">'+u[2]+'</div><div class="t"></div><button class="buy" type="button" data-own="1"></button>';
+ r.querySelector("button").addEventListener("click",()=>{const pl=plan(u);if(pl.ok){s.score-=pl.c;s.lv[u[0]]+=pl.n;s.q.bought+=pl.n;snd("buy");refresh();save()}else snd("no")});
  $("shop").appendChild(r);rows[u[0]]=r;
 });
 // --- задания
 const QT={taps:["👆","Сделай тапов: "],earned:["💰","Заработай за день: "],bought:["🛒","Купи улучшений: "]};
 const qrows=[0,1,2].map(i=>{
  const r=document.createElement("div");r.className="row";
- r.innerHTML='<div class="ic"></div><div class="t"></div><button class="buy" type="button"></button>';
+ r.innerHTML='<div class="ic"></div><div class="t"></div><button class="buy" type="button" data-own="1"></button>';
  r.querySelector("button").addEventListener("click",()=>{
   const it=s.q.items[i];
-  if(!it.done&&s.q[it.k]>=it.tg){it.done=true;s.score+=it.rw;s.total+=it.rw;refresh();save()}
+  if(!it.done&&s.q[it.k]>=it.tg){it.done=true;s.score+=it.rw;s.total+=it.rw;snd("claim");refresh();save()}else if(!it.done)snd("no")
  });
  $("ql").appendChild(r);return r;
 });
 function refresh(){
  checkQ();
  $("score").textContent=fmt(s.score);$("pt").textContent=fmt(tapPower());$("ps").textContent=fmt(perSec());
- const p=Math.min(1,s.total/GOAL);
- $("goal").textContent="Цель: "+fmt(GOAL);$("pct").textContent=(p*100).toFixed(1)+"%";$("fill").style.width=(p*100)+"%";
+ const st2=s.total>=GOAL,p=st2?Math.min(1,(Math.log10(s.total)-9)/9):Math.min(1,s.total/GOAL);
+ $("goal").textContent=(st2?"Этап 2 · цель: "+fmt(GOAL2):"Цель: "+fmt(GOAL));$("pct").textContent=(p*100).toFixed(1)+"%";$("fill").style.width=(p*100)+"%";
  let lockedShown=false,hidden=0;
  U.forEach(u=>{
   const r=rows[u[0]],vis=s.lv[u[0]]>0||s.total>=u[3]*.5;
   r.style.display=vis?"":"none";
   if(!vis){if(!lockedShown){lockedShown=true;$("lkt").textContent="Заработай ещё "+fmt(Math.ceil(u[3]*.5-s.total))+", чтобы открыть"}else hidden++;return}
   const pl=plan(u);
-  r.querySelector(".t").innerHTML="<b>"+u[1]+'</b><span class="lv">ур. '+s.lv[u[0]]+"</span><small>"+(u[4]?"+"+fmt(u[4])+" за тап":"+"+fmt(u[5])+" в секунду")+"</small>";
+  r.querySelector(".t").innerHTML="<b>"+u[1]+'</b><span class="lv">ур. '+s.lv[u[0]]+"</span><small>"+(u[4]?"+"+fmt(u[4])+" за тап":"+"+fmt(u[5])+" в секунду")+(u[6]?" · "+u[6]:"")+"</small>";
   const b=r.querySelector("button");b.className="buy"+(pl.ok?" can":"");
   b.innerHTML="<b>"+fmt(pl.c)+"</b><small>"+(pl.ok?"купить":"копим на")+" ×"+pl.n+"</small>";
  });
@@ -173,7 +224,8 @@ function refresh(){
   const b=r.querySelector("button");b.className="buy"+(ready?" can":"");
   b.innerHTML=it.done?"<b>Готово ✓</b>":"<b>+"+fmt(it.rw)+"</b><small>"+(ready?"забрать":"награда")+"</small>";
  });
- if(s.total>=GOAL&&!s.won){s.won=true;$("win").style.display="block";save()}
+ if(s.total>=GOAL&&!s.won){s.won=true;$("win").innerHTML="Этап 1 пройден: миллиард кублей! 🎉<br>Открыт этап 2: путь до квинтиллиона. Новые улучшения уже в магазине (нажми, чтобы закрыть)";$("win").style.display="block";snd("claim");save()}
+ if(s.total>=GOAL2&&!s.won2){s.won2=true;$("win").innerHTML="Квинтиллион кублей! Ты прошёл игру полностью! 🏆<br>(нажми, чтобы закрыть)";$("win").style.display="block";snd("claim");save()}
 }
 // --- профили
 function arm(b,label,fn){let a=false;b.addEventListener("click",()=>{if(!a){a=true;b.textContent="Точно?";setTimeout(()=>{a=false;b.textContent=label},3000);return}a=false;b.textContent=label;fn()})}
@@ -207,19 +259,271 @@ $("padd").addEventListener("click",()=>{
 // --- управление
 $("tabs").addEventListener("click",e=>{const t=e.target.dataset.t;if(!t)return;
  [...$("tabs").children].forEach(b=>b.classList.toggle("on",b.dataset.t===t));
- $("up").style.display=t==="up"?"":"none";$("qs").style.display=t==="qs"?"":"none";$("mul").style.visibility=t==="up"?"visible":"hidden"});
+ $("up").style.display=t==="up"?"":"none";$("qs").style.display=t==="qs"?"":"none";$("lb").style.display=t==="lb"?"":"none";if(t==="lb")lbOpen();$("mul").style.visibility=t==="up"?"visible":"hidden"});
 $("mul").addEventListener("click",e=>{const m=e.target.dataset.m;if(m===undefined)return;mult=+m;
  [...$("mul").children].forEach(b=>b.classList.toggle("on",b.dataset.m===m));refresh()});
-function pop(e){const p=document.createElement("span");p.className="pop";p.textContent="+"+fmt(tapPower());
+function pop(e,g){const p=document.createElement("span");p.className="pop";p.textContent="+"+(g<10?String(Math.round(g*10)/10):fmt(g));
  p.style.left=e.clientX+"px";p.style.top=(e.clientY-20)+"px";document.body.appendChild(p);p.addEventListener("animationend",()=>p.remove())}
-$("tap").addEventListener("pointerdown",e=>{e.preventDefault();addPts(tapPower());s.taps++;s.q.taps++;pop(e);refresh()});
-document.addEventListener("keydown",e=>{if(e.code==="Space"&&!e.repeat&&e.target.tagName!=="INPUT"){e.preventDefault();addPts(tapPower());s.taps++;s.q.taps++;refresh()}});
+$("tap").addEventListener("pointerdown",e=>{e.preventDefault();const g=tapPower()*comboHit();addPts(g);s.taps++;s.q.taps++;pop(e,g);snd("tap");refresh()});
+document.addEventListener("keydown",e=>{if(e.code==="Space"&&!e.repeat&&e.target.tagName!=="INPUT"){e.preventDefault();addPts(tapPower()*comboHit());s.taps++;s.q.taps++;snd("tap");refresh()}});
 $("win").addEventListener("click",()=>$("win").style.display="none");
 arm($("reset"),"Сбросить прогресс",()=>{s=blank();checkQ();save();refresh()});
 setInterval(()=>{addPts(perSec());refresh()},1000);
 setInterval(save,10000);
 document.addEventListener("visibilitychange",()=>{if(document.hidden)save()});
 window.addEventListener("pagehide",save);
+// --- настройки
+const SK={
+ purple:{n:"Фиолетовый",bg:"#1c0b3a",card:"#2a1259",card2:"#1f0d44",g1:"#4a2a8a",g2:"#5b1f7a",panel:"rgba(74,42,138,.35)",line:"rgba(155,93,229,.35)",accent:"#9b5de5",pink:"#e85dc4",t1:"#d6a5ff",t2:"#8a3df0",t3:"#5b21b6",rgb:"155,93,229",muted:"#a994d6"},
+ blue:{n:"Синий",bg:"#06152e",card:"#0c2a55",card2:"#081d3d",g1:"#13427f",g2:"#0b5a8a",panel:"rgba(19,66,127,.35)",line:"rgba(80,160,255,.35)",accent:"#3d8bff",pink:"#29d3e8",t1:"#a5ccff",t2:"#3d8bff",t3:"#1b4fb8",rgb:"61,139,255",muted:"#8fb0dc"},
+ green:{n:"Зелёный",bg:"#06210f",card:"#0d3a1c",card2:"#082a14",g1:"#14602f",g2:"#0f6b5a",panel:"rgba(20,96,47,.35)",line:"rgba(70,210,120,.35)",accent:"#2fc46a",pink:"#b6e84a",t1:"#a8f0c4",t2:"#2fc46a",t3:"#16803f",rgb:"47,196,106",muted:"#8fcaa6"},
+ red:{n:"Красный",bg:"#2a0a14",card:"#4a1226",card2:"#330a1a",g1:"#7a1a3d",g2:"#8a2a1a",panel:"rgba(122,26,61,.35)",line:"rgba(255,100,130,.35)",accent:"#ee4a6b",pink:"#ff9a4a",t1:"#ffb3c2",t2:"#ee4a6b",t3:"#a5183a",rgb:"238,74,107",muted:"#d6a0ae"},
+ orange:{n:"Оранжевый",bg:"#2a1405",card:"#4a2508",card2:"#331a05",g1:"#7a4210",g2:"#8a2f1a",panel:"rgba(122,66,16,.35)",line:"rgba(255,160,60,.35)",accent:"#ff8a2a",pink:"#ffcc33",t1:"#ffd2a0",t2:"#ff8a2a",t3:"#b4500a",rgb:"255,138,42",muted:"#d6b394"},
+ dark:{n:"Графит",bg:"#0b0b10",card:"#1a1a22",card2:"#121218",g1:"#2a2a38",g2:"#20202c",panel:"rgba(60,60,80,.35)",line:"rgba(160,160,190,.3)",accent:"#6f7bff",pink:"#b36cff",t1:"#c4caff",t2:"#6f7bff",t3:"#3b43b8",rgb:"111,123,255",muted:"#9a9ab5"}
+};
+let S={skin:"purple",zoom:false,app:true,mv:35,sv:70,nick:""};
+{const d=lsGet("tapalka-settings");if(d){if(SK[d.skin])S.skin=d.skin;S.zoom=!!d.zoom;S.app=d.app!==false;if(d.mv!=null)S.mv=+d.mv;if(d.sv!=null)S.sv=+d.sv;if(typeof d.nick==="string")S.nick=d.nick.slice(0,16)}}
+function applyS(){
+ const r=document.documentElement,k=SK[S.skin];
+ Object.keys(k).forEach(a=>{if(a!=="n")r.style.setProperty("--"+a,k[a])});
+ r.classList.toggle("app",S.app);r.classList.toggle("nozoom",!S.zoom);
+ document.querySelector('meta[name="viewport"]').content="width=device-width, initial-scale=1, viewport-fit=cover"+(S.zoom?"":", maximum-scale=1, user-scalable=no");
+ const tc=document.querySelector('meta[name="theme-color"]');if(tc)tc.content=k.card;
+ lsSet("tapalka-settings",S);
+}
+function renderS(){
+ const L=$("sk");L.innerHTML="";
+ Object.keys(SK).forEach(id=>{
+  const b=document.createElement("button");b.type="button";b.className="swatch"+(id===S.skin?" on":"");
+  b.style.background="linear-gradient(135deg,"+SK[id].accent+","+SK[id].pink+")";b.textContent=SK[id].n;
+  b.addEventListener("click",()=>{S.skin=id;applyS();renderS()});L.appendChild(b);
+ });
+ $("mv").value=S.mv;$("sv").value=S.sv;$("zsw").className="sw"+(S.zoom?" on":"");$("asw").className="sw"+(S.app?" on":"");
+}
+$("sbtn").addEventListener("click",()=>{renderS();renderCloud();$("st").style.display="block"});
+$("sclose").addEventListener("click",()=>$("st").style.display="none");
+$("zsw").addEventListener("click",()=>{S.zoom=!S.zoom;applyS();renderS()});
+$("asw").addEventListener("click",()=>{S.app=!S.app;applyS();renderS()});
+document.addEventListener("contextmenu",e=>{if(S.app)e.preventDefault()});
+// --- звук (создаётся кодом, внешних файлов нет)
+const A={ctx:null};
+const mHz=m=>440*Math.pow(2,(m-69)/12);
+function audioInit(){
+ if(A.ctx){if(A.ctx.state==="suspended"&&!document.hidden)A.ctx.resume();return}
+ const C=window.AudioContext||window.webkitAudioContext;if(!C)return;
+ const x=A.ctx=new C(),comp=x.createDynamicsCompressor();
+ comp.connect(x.destination);
+ A.sg=x.createGain();A.sg.connect(comp);
+ A.mg=x.createGain();A.mg.connect(comp);
+ A.mb=x.createGain();A.mb.connect(A.mg);
+ A.mel=x.createGain();A.mel.connect(A.mb);
+ const D=x.createDelay(1),fb=x.createGain(),lp=x.createBiquadFilter();
+ D.delayTime.value=.46;fb.gain.value=.4;lp.type="lowpass";lp.frequency.value=1500;
+ A.mel.connect(D);D.connect(lp);lp.connect(fb);fb.connect(D);lp.connect(A.mb);
+ applyVol();musicTick();
+}
+function applyVol(){
+ if(!A.ctx)return;const t=A.ctx.currentTime;
+ A.sg.gain.setTargetAtTime(Math.pow(S.sv/100,1.5),t,.05);
+ A.mg.gain.setTargetAtTime(Math.pow(S.mv/100,1.5)*1.2,t,.05);
+}
+function voice(f,t,dur,type,gain,dest,atk,cut){
+ const x=A.ctx,o=x.createOscillator(),g=x.createGain(),lp=x.createBiquadFilter();
+ o.type=type;o.frequency.value=f;lp.type="lowpass";lp.frequency.value=cut;
+ g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(gain,t+atk);g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+ o.connect(lp);lp.connect(g);g.connect(dest);o.start(t);o.stop(t+dur+.05);
+}
+function ping(m,v,d,t0){
+ const t=A.ctx.currentTime+(t0||0),f=mHz(m);
+ voice(f,t,d,"sine",.35*v,A.sg,.008,4000);
+ voice(f*1.004,t,d,"sine",.2*v,A.sg,.008,4000);
+ voice(f*2,t,d*.6,"triangle",.08*v,A.sg,.008,3500);
+}
+const PS=[72,74,76,79,81,84];let lastN=0,lastT=0;
+function snd(k){
+ audioInit();if(!A.ctx||A.ctx.state!=="running")return;
+ if(k==="tap"||k==="ui"){const n=performance.now();if(n-lastT<30)return;lastT=n}
+ if(k==="tap"){let m;do{m=PS[Math.floor(Math.random()*PS.length)]}while(m===lastN);lastN=m;ping(m,1,.38)}
+ else if(k==="ui")ping(79,.45,.22);
+ else if(k==="buy")[72,76,79,84].forEach((m,i)=>ping(m,.9,.5,i*.07));
+ else if(k==="claim")[72,76,79,84,88].forEach((m,i)=>ping(m,.9,.7,i*.08));
+ else if(k==="no")ping(55,.8,.25);
+ else if(k==="combo")[79,84].forEach((m,i)=>ping(m,.8,.35,i*.06));
+}
+// фоновая музыка: плавные аккорды и редкие нежные нотки с эхом
+const CH=[[48,55,59,64],[45,52,55,60],[41,48,52,57],[43,50,55,59]],ME=[67,69,72,74,76,79,81,84];
+let mStep=0;
+function musicTick(){
+ const x=A.ctx;
+ if(x.state==="running"){
+  const t=x.currentTime+.05;
+  if(mStep%8===0)CH[(mStep/8)%4].forEach((m,i)=>voice(mHz(m),t+i*.15,7,"sine",.22,A.mb,1.8,900));
+  if(Math.random()<.6)voice(mHz(ME[Math.floor(Math.random()*ME.length)]),t,1.8,"triangle",.1,A.mel,.03,2200);
+  mStep++;
+ }
+ setTimeout(musicTick,650);
+}
+document.addEventListener("pointerdown",audioInit);
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("button");if(b&&b.id!=="tap"&&!b.dataset.own)snd("ui")});
+document.addEventListener("visibilitychange",()=>{if(!A.ctx)return;if(document.hidden)A.ctx.suspend();else A.ctx.resume()});
+$("mv").addEventListener("input",e=>{S.mv=+e.target.value;audioInit();applyVol();lsSet("tapalka-settings",S)});
+$("sv").addEventListener("input",e=>{S.sv=+e.target.value;audioInit();applyVol();lsSet("tapalka-settings",S)});
+$("sv").addEventListener("change",()=>snd("tap"));
+// --- онлайн-лидерборд (Firebase). Настройки лежат в firebase-config.js
+const FB_CONFIG=(window.FB_CONFIG&&window.FB_CONFIG.apiKey&&!/ВСТАВЬ/.test(window.FB_CONFIG.apiKey))?window.FB_CONFIG:null;
+const FBV="10.14.1";
+const LB={ready:false,busy:false,uid:null,db:null,m:null,srv:null,name:null,last:0};
+async function lbInit(){
+ if(LB.ready)return true;
+ if(!FB_CONFIG)return false;
+ const u=n=>"https://www.gstatic.com/firebasejs/"+FBV+"/firebase-"+n+".js";
+ const [a,au,fs]=await Promise.all([import(u("app")),import(u("auth")),import(u("firestore"))]);
+ const app=a.initializeApp(FB_CONFIG),auth=au.getAuth(app);
+ await auth.authStateReady();
+ if(!auth.currentUser)await au.signInAnonymously(auth);
+ LB.au=au;LB.auth=auth;LB.uid=auth.currentUser.uid;LB.db=fs.getFirestore(app);LB.m=fs;LB.ready=true;
+ return true;
+}
+function lbMsg(t){const d=document.createElement("div");d.className="qd";d.textContent=t;$("ll").innerHTML="";$("ll").appendChild(d)}
+async function lbLoad(){
+ try{
+  if(!await lbInit()){lbMsg("Рейтинг пока не подключён.");return}
+  const m=LB.m,snap=await m.getDocs(m.query(m.collection(LB.db,"leaders"),m.orderBy("score","desc"),m.limit(50)));
+  const L=$("ll");L.innerHTML="";let i=0;
+  snap.forEach(d=>{
+   i++;const v=d.data(),r=document.createElement("div");r.className="row";
+   if(d.id===LB.uid)r.style.borderColor="var(--gold)";
+   r.innerHTML='<div class="ic"></div><div class="t"><b></b></div><div class="t" style="flex:none;text-align:right;color:var(--gold);font-weight:700"></div>';
+   r.children[0].textContent=i<=3?["🥇","🥈","🥉"][i-1]:String(i);
+   r.children[1].firstChild.textContent=String(v.name||"");
+   r.children[2].textContent=fmt(v.score||0);
+   L.appendChild(r);
+  });
+  if(!i)lbMsg("Пока никого нет. Будь первым!");
+ }catch(e){lbMsg("Не удалось загрузить рейтинг ("+((e&&e.code)||"нет сети")+").")}
+}
+async function lbSubmit(force){
+ const name=(S.nick||"").trim().slice(0,16);
+ if(!name||LB.busy||!FB_CONFIG)return;
+ const now=Date.now();if(!force&&now-LB.last<60000)return;
+ LB.busy=true;
+ try{
+  if(!await lbInit())return;
+  const m=LB.m,ref=m.doc(LB.db,"leaders",LB.uid);
+  if(LB.srv===null){const d=await m.getDoc(ref);LB.srv=d.exists()?d.data().score:-1;LB.name=d.exists()?d.data().name:null}
+  const sc=Math.max(Math.min(s.total,4.9e18),LB.srv);
+  if(sc===LB.srv&&name===LB.name)return;
+  await m.setDoc(ref,{name:name,score:sc,t:m.serverTimestamp()});
+  LB.srv=sc;LB.name=name;LB.last=now;
+ }catch(e){}finally{LB.busy=false}
+}
+async function lbOpen(){
+ $("nick").value=S.nick||"";
+ $("lbs").textContent=!FB_CONFIG?"Рейтинг пока не подключён.":(S.nick?"Твой результат отправляется сам, ник виден всем.":"Введи ник, чтобы попасть в рейтинг.");
+ lbMsg("Загрузка…");
+ await lbSubmit(true);await lbLoad();
+}
+$("nsave").addEventListener("click",()=>{S.nick=$("nick").value.trim().slice(0,16);lsSet("tapalka-settings",S);lbOpen()});
+setInterval(()=>lbSubmit(false),60000);
+// --- комбо: тапы без пауз усиливают тап
+const COMBO_GAP=1000,CB=[[80,2],[60,1.7],[40,1.5],[20,1.2]];
+let cb=0,cbT=0;
+const cbMult=()=>{for(const[n,m]of CB)if(cb>=n)return m;return 1};
+function comboHit(){
+ const n=performance.now();if(n-cbT>COMBO_GAP)cb=0;
+ cb++;cbT=n;
+ if(cb===20||cb===40||cb===60||cb===80)snd("combo");
+ return cbMult();
+}
+function updCombo(){
+ const n=performance.now();if(cb&&n-cbT>COMBO_GAP)cb=0;
+ const m=cbMult();
+ $("cmbt").textContent=cb?(m>1?"КОМБО ×"+m+" · "+cb:"Комбо: "+cb+" / 20"):"Тапай без пауз, чтобы набрать комбо";
+ $("cmbt").style.color=m>1?"var(--gold)":"var(--muted)";
+ $("cmbf").style.width=cb?Math.max(0,100-(n-cbT)/COMBO_GAP*100)+"%":"0%";
+}
+setInterval(updCombo,80);
+// --- облачное сохранение и код сохранения
+const CL={last:0,busy:false};
+const isNative=()=>!!(window.Capacitor&&Capacitor.isNativePlatform&&Capacitor.isNativePlatform());
+function packAll(){save();const o={v:1,list:P.list,cur:P.cur,st:{}};P.list.forEach(x=>{o.st[x.id]=lsGet("tapalka-v2-"+x.id)});return o}
+function mergeIn(c){
+ save();let cur=false;
+ (c.list||[]).forEach(x=>{
+  if(!x||!x.id)return;
+  if(!P.list.some(y=>y.id===x.id))P.list.push({id:String(x.id),name:String(x.name||"Игрок").slice(0,16)});
+  const cs=c.st&&c.st[x.id];if(!cs)return;
+  const ls=lsGet("tapalka-v2-"+x.id);
+  if(!ls||(+cs.total||0)>(+ls.total||0)){lsSet("tapalka-v2-"+x.id,cs);if(x.id===P.cur)cur=true}
+ });
+ lsSet(PK,P);if(cur)loadP(P.cur);refresh();
+}
+function renderCloud(){
+ const u=LB.ready&&LB.auth.currentUser,g=!!(u&&!u.isAnonymous);
+ $("gbtn").style.display=g?"none":"";$("gout").style.display=g?"":"none";$("gsync").style.display=g?"":"none";
+ $("cs").textContent=!FB_CONFIG?"Облако не подключено.":(g?"Вход выполнен: "+(u.email||"Google")+". Прогресс сохраняется в облако.":"Войди через Google, чтобы прогресс не терялся при удалении и обновлении.");
+}
+async function cloudSync(){
+ if(CL.busy||!FB_CONFIG)return;
+ try{
+  if(!await lbInit())return;
+  const u=LB.auth.currentUser;if(!u||u.isAnonymous)return;
+  CL.busy=true;
+  const m=LB.m,ref=m.doc(LB.db,"saves",u.uid),d=await m.getDoc(ref);
+  if(d.exists()){try{mergeIn(JSON.parse(d.data().data))}catch(e){}}
+  await m.setDoc(ref,{data:JSON.stringify(packAll()),t:m.serverTimestamp()});
+  CL.last=Date.now();$("cs").textContent="Синхронизировано в "+new Date().toLocaleTimeString().slice(0,5);
+ }catch(e){$("cs").textContent="Ошибка облака ("+((e&&e.code)||"нет сети")+")"}
+ finally{CL.busy=false}
+}
+async function gSignIn(){
+ try{
+  $("cs").textContent="Вход…";
+  if(!await lbInit()){$("cs").textContent="Firebase не подключён.";return}
+  const au=LB.au,auth=LB.auth,cu=auth.currentUser;
+  let cred=null;
+  if(isNative()){const r=await Capacitor.registerPlugin("FirebaseAuthentication").signInWithGoogle();cred=au.GoogleAuthProvider.credential(r.credential.idToken)}
+  try{
+   if(cred){if(cu&&cu.isAnonymous)await au.linkWithCredential(cu,cred);else await au.signInWithCredential(auth,cred)}
+   else{const p=new au.GoogleAuthProvider();if(cu&&cu.isAnonymous)await au.linkWithPopup(cu,p);else await au.signInWithPopup(auth,p)}
+  }catch(e){
+   if(e&&e.code==="auth/credential-already-in-use"){await au.signInWithCredential(auth,cred||au.GoogleAuthProvider.credentialFromError(e))}
+   else throw e;
+  }
+  LB.uid=auth.currentUser.uid;LB.srv=null;LB.name=null;
+  await cloudSync();renderCloud();lbSubmit(true);
+ }catch(e){
+  const c=String((e&&e.code)||"");
+  $("cs").textContent=/not-supported|popup|web-storage/.test(c)?"В этой версии вход через Google недоступен. Используй код сохранения ниже.":"Не удалось войти ("+(c||String((e&&e.message)||"ошибка").slice(0,50))+")";
+ }
+}
+async function gOut(){
+ try{
+  if(LB.ready){
+   if(isNative()){try{await Capacitor.registerPlugin("FirebaseAuthentication").signOut()}catch(e){}}
+   await LB.au.signOut(LB.auth);await LB.au.signInAnonymously(LB.auth);
+   LB.uid=LB.auth.currentUser.uid;LB.srv=null;LB.name=null;
+  }
+ }catch(e){}
+ renderCloud();
+}
+$("gbtn").addEventListener("click",gSignIn);
+$("gsync").addEventListener("click",cloudSync);
+$("gout").addEventListener("click",gOut);
+$("bexp").addEventListener("click",()=>{
+ const c=btoa(unescape(encodeURIComponent(JSON.stringify(packAll()))));
+ $("bk").value=c;$("bk").select();try{navigator.clipboard.writeText(c)}catch(e){}
+ $("bmsg").textContent="Код готов. Сохрани его в надёжное место (например, в заметки).";
+});
+$("bimp").addEventListener("click",()=>{
+ try{
+  const c=JSON.parse(decodeURIComponent(escape(atob($("bk").value.trim()))));
+  mergeIn(c);$("bk").value="";$("bmsg").textContent="Загружено. Для каждого профиля берётся лучший прогресс.";
+ }catch(e){$("bmsg").textContent="Код не подходит."}
+});
+setInterval(()=>{const u=LB.ready&&LB.auth.currentUser;if(u&&!u.isAnonymous&&Date.now()-CL.last>90000)cloudSync()},30000);
+setTimeout(async()=>{try{if(await lbInit()){renderCloud();cloudSync()}}catch(e){}},1500);
+applyS();
 refresh();
 if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))}
 </script>
