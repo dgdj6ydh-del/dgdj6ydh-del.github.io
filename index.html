@@ -4,9 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#1c0b3a">
-<link rel="manifest" href="manifest.json">
-<link rel="icon" href="icon-192.png">
-<link rel="apple-touch-icon" href="icon-192.png">
 <title>Тапалка</title>
 <style>
 :root{--bg:#1c0b3a;--card:#2a1259;--panel:rgba(74,42,138,.35);--line:rgba(155,93,229,.35);--accent:#9b5de5;--pink:#e85dc4;--text:#f3e8ff;--gold:#ffd86b;--muted:#a994d6;--card2:#1f0d44;--g1:#4a2a8a;--g2:#5b1f7a;--t1:#d6a5ff;--t2:#8a3df0;--t3:#5b21b6;--rgb:155,93,229;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -70,7 +67,6 @@ button{font-family:inherit;color:inherit}
 html.app,html.app body{overscroll-behavior:none}
 html.app body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 html.app input{-webkit-user-select:text;user-select:text}
-html.nozoom,html.nozoom body{touch-action:pan-y}
 .set.col{display:block}
 input[type=range]{width:100%;accent-color:var(--accent);margin:8px 0 0}
 #st .box{max-height:calc(100vh - 60px);overflow-y:auto}
@@ -111,8 +107,7 @@ html.app textarea{-webkit-user-select:text;user-select:text}
  <h3>Настройки</h3>
  <b style="font-size:.9rem">Цвет интерфейса</b>
  <div class="sk" id="sk"></div>
- <div class="set"><div><b>Масштабирование пальцами</b><small>Выключено: щипок и двойной тап не увеличивают экран</small></div><button class="sw" id="zsw" type="button"></button></div>
- <div class="set"><div><b>Режим приложения</b><small>Не выделяется текст, нет обновления свайпом вниз и меню по долгому нажатию</small></div><button class="sw" id="asw" type="button"></button></div>
+  <div class="set"><div><b>Режим приложения</b><small>Не выделяется текст, нет обновления свайпом вниз и меню по долгому нажатию</small></div><button class="sw" id="asw" type="button"></button></div>
  <div class="set col"><b>Музыка</b><small>Начнёт играть после первого нажатия</small><input id="mv" type="range" min="0" max="100"></div>
  <div class="set col"><b>Звуки нажатий</b><input id="sv" type="range" min="0" max="100"></div>
  <b style="font-size:.9rem;display:block;margin-top:6px">Облако (Google)</b>
@@ -279,14 +274,19 @@ const SK={
  green:{n:"Зелёный",bg:"#06210f",card:"#0d3a1c",card2:"#082a14",g1:"#14602f",g2:"#0f6b5a",panel:"rgba(20,96,47,.35)",line:"rgba(70,210,120,.35)",accent:"#2fc46a",pink:"#b6e84a",t1:"#a8f0c4",t2:"#2fc46a",t3:"#16803f",rgb:"47,196,106",muted:"#8fcaa6"},
  red:{n:"Красный",bg:"#2a0a14",card:"#4a1226",card2:"#330a1a",g1:"#7a1a3d",g2:"#8a2a1a",panel:"rgba(122,26,61,.35)",line:"rgba(255,100,130,.35)",accent:"#ee4a6b",pink:"#ff9a4a",t1:"#ffb3c2",t2:"#ee4a6b",t3:"#a5183a",rgb:"238,74,107",muted:"#d6a0ae"},
  orange:{n:"Оранжевый",bg:"#2a1405",card:"#4a2508",card2:"#331a05",g1:"#7a4210",g2:"#8a2f1a",panel:"rgba(122,66,16,.35)",line:"rgba(255,160,60,.35)",accent:"#ff8a2a",pink:"#ffcc33",t1:"#ffd2a0",t2:"#ff8a2a",t3:"#b4500a",rgb:"255,138,42",muted:"#d6b394"},
- dark:{n:"Графит",bg:"#0b0b10",card:"#1a1a22",card2:"#121218",g1:"#2a2a38",g2:"#20202c",panel:"rgba(60,60,80,.35)",line:"rgba(160,160,190,.3)",accent:"#6f7bff",pink:"#b36cff",t1:"#c4caff",t2:"#6f7bff",t3:"#3b43b8",rgb:"111,123,255",muted:"#9a9ab5"}
-};
-let S={skin:"purple",zoom:false,app:true,mv:35,sv:70,nick:""};
-{const d=lsGet("tapalka-settings");if(d){if(SK[d.skin])S.skin=d.skin;S.zoom=!!d.zoom;S.app=d.app!==false;if(d.mv!=null)S.mv=+d.mv;if(d.sv!=null)S.sv=+d.sv;if(typeof d.nick==="string")S.nick=d.nick.slice(0,16)}}
+ dark:{n:"Графит",bg:"#0b0b10",card:"#1a1a22",card2:"#121218",g1:"#2a2a38",g2:"#20202c",panel:"rgba(60,60,80,.35)",line:"rgba(160,160,190,.3)",accent:"#6f7bff",pink:"#b36cff",t1:"#c4caff",t2:"#6f7bff",t3:"#3b43b8",rgb:"111,123,255",muted:"#9a9ab5"},
+
+ purpleTeal:{n:"Фиолетовый / бирюзовый",bg:"#190d32",card:"#29164b",card2:"#21113d",g1:"#4b2876",g2:"#174e5a",panel:"rgba(67,48,112,.4)",line:"rgba(64,224,208,.35)",accent:"#24c9bd",pink:"#55e6d6",t1:"#a5fff3",t2:"#24c9bd",t3:"#087d78",rgb:"36,201,189",muted:"#b1a5d4"},
+
+ teal:{n:"Бирюзовый",bg:"#062b2b",card:"#0b4141",card2:"#082f32",g1:"#116565",g2:"#087c78",panel:"rgba(17,101,101,.35)",line:"rgba(75,230,210,.35)",accent:"#20c9b8",pink:"#20c9b8",t1:"#aafff3",t2:"#20c9b8",t3:"#087d78",rgb:"32,201,184",muted:"#91d5cd"},
+
+ blackYellow:{n:"Чёрный / жёлтый",bg:"#090909",card:"#202020",card2:"#151515",g1:"#303030",g2:"#171717",panel:"rgba(65,65,65,.4)",line:"rgba(255,214,45,.35)",accent:"#ffd629",pink:"#ffe878",t1:"#fff5a6",t2:"#ffd629",t3:"#bd8d00",rgb:"255,214,41",muted:"#bcb8a0"}
+};let S={skin:"purple",app:true,mv:35,sv:70,nick:""};
+{const d=lsGet("tapalka-settings");if(d){if(SK[d.skin])S.skin=d.skin;S.app=d.app!==false;if(d.mv!=null)S.mv=+d.mv;if(d.sv!=null)S.sv=+d.sv;if(typeof d.nick==="string")S.nick=d.nick.slice(0,16)}}
 function applyS(){
- const r=document.documentElement,k=SK[S.skin];
+ const r=document.documentElement,k=SK[S.skin];r.classList.add("nozoom");
  Object.keys(k).forEach(a=>{if(a!=="n")r.style.setProperty("--"+a,k[a])});
- r.classList.toggle("app",S.app);r.classList.toggle("nozoom",!S.zoom);
+ r.classList.toggle("app",S.app);
  document.querySelector('meta[name="viewport"]').content="width=device-width, initial-scale=1, viewport-fit=cover"+(S.zoom?"":", maximum-scale=1, user-scalable=no");
  const tc=document.querySelector('meta[name="theme-color"]');if(tc)tc.content=k.card;
  lsSet("tapalka-settings",S);
@@ -298,11 +298,11 @@ function renderS(){
   b.style.background="linear-gradient(135deg,"+SK[id].accent+","+SK[id].pink+")";b.textContent=SK[id].n;
   b.addEventListener("click",()=>{S.skin=id;applyS();renderS()});L.appendChild(b);
  });
- $("mv").value=S.mv;$("sv").value=S.sv;$("zsw").className="sw"+(S.zoom?" on":"");$("asw").className="sw"+(S.app?" on":"");
+ $("mv").value=S.mv;$("sv").value=S.sv;
+$("asw").className="sw"+(S.app?" on":"");
 }
 $("sbtn").addEventListener("click",()=>{renderS();renderCloud();$("st").style.display="block"});
 $("sclose").addEventListener("click",()=>$("st").style.display="none");
-$("zsw").addEventListener("click",()=>{S.zoom=!S.zoom;applyS();renderS()});
 $("asw").addEventListener("click",()=>{S.app=!S.app;applyS();renderS()});
 document.addEventListener("contextmenu",e=>{if(S.app)e.preventDefault()});
 // --- звук (создаётся кодом, внешних файлов нет)
@@ -339,12 +339,47 @@ function ping(m,v,d,t0){
  voice(f*1.004,t,d,"sine",.2*v,A.sg,.008,4000);
  voice(f*2,t,d*.6,"triangle",.08*v,A.sg,.008,3500);
 }
+function keyboardTap(){
+ const x=A.ctx,t=x.currentTime;
+
+ // Мягкий звук самого переключателя
+ voice(520,t,.045,"triangle",.16,A.sg,.001,3200);
+ voice(780,t+.002,.035,"sine",.055,A.sg,.001,3800);
+
+ // Короткий сухой щелчок
+ const len=Math.floor(x.sampleRate*.018);
+ const b=x.createBuffer(1,len,x.sampleRate);
+ const data=b.getChannelData(0);
+
+ for(let i=0;i<len;i++){
+  data[i]=(Math.random()*2-1)*Math.pow(1-i/len,2);
+ }
+
+ const src=x.createBufferSource();
+ src.buffer=b;
+
+ const bp=x.createBiquadFilter();
+ bp.type="bandpass";
+ bp.frequency.value=1900;
+ bp.Q.value=.8;
+
+ const g=x.createGain();
+ g.gain.setValueAtTime(.0001,t);
+ g.gain.linearRampToValueAtTime(.10,t+.001);
+ g.gain.exponentialRampToValueAtTime(.0001,t+.018);
+
+ src.connect(bp);
+ bp.connect(g);
+ g.connect(A.sg);
+
+ src.start(t);
+ src.stop(t+.02);
+}
 const PS=[72,74,76,79,81,84];let lastN=0,lastT=0;
 function snd(k){
  audioInit();if(!A.ctx||A.ctx.state!=="running")return;
  if(k==="tap"||k==="ui"){const n=performance.now();if(n-lastT<30)return;lastT=n}
- if(k==="tap"){let m;do{m=PS[Math.floor(Math.random()*PS.length)]}while(m===lastN);lastN=m;ping(m,1,.38)}
- else if(k==="ui")ping(79,.45,.22);
+ if(k==="tap")keyboardTap();else if(k==="ui")ping(79,.45,.22);
  else if(k==="buy")[72,76,79,84].forEach((m,i)=>ping(m,.9,.5,i*.07));
  else if(k==="claim")[72,76,79,84,88].forEach((m,i)=>ping(m,.9,.7,i*.08));
  else if(k==="no")ping(55,.8,.25);
@@ -423,24 +458,54 @@ async function lbOpen(){
  lbMsg("Загрузка…");
  await lbSubmit(true);await lbLoad();
 }
-$("nsave").addEventListener("click",()=>{S.nick=$("nick").value.trim().slice(0,16);lsSet("tapalka-settings",S);lbOpen()});
-setInterval(()=>lbSubmit(false),60000);
-// --- комбо: тапы без пауз усиливают тап
-const COMBO_GAP=1000,CB=[[80,2],[60,1.7],[40,1.5],[20,1.2]];
+
+ // --- комбо: тапы без пауз усиливают тап
+const COMBO_GAP=1000;
+const CB=[[400,3],[200,2],[120,1.7],[80,1.5],[40,1.2]];
+
 let cb=0,cbT=0;
-const cbMult=()=>{for(const[n,m]of CB)if(cb>=n)return m;return 1};
+
+const cbMult=()=>{
+ for(const[n,m]of CB)if(cb>=n)return m;
+ return 1;
+};
+
 function comboHit(){
- const n=performance.now();if(n-cbT>COMBO_GAP)cb=0;
- cb++;cbT=n;
- if(cb===20||cb===40||cb===60||cb===80)snd("combo");
+ const n=performance.now();
+ if(n-cbT>COMBO_GAP)cb=0;
+
+ cb++;
+ cbT=n;
+
+ if(cb===40||cb===80||cb===120||cb===200||cb===400)snd("combo");
+
  return cbMult();
 }
+
 function updCombo(){
- const n=performance.now();if(cb&&n-cbT>COMBO_GAP)cb=0;
+ const n=performance.now();
+ if(cb&&n-cbT>COMBO_GAP)cb=0;
+
  const m=cbMult();
- $("cmbt").textContent=cb?(m>1?"КОМБО ×"+m+" · "+cb:"Комбо: "+cb+" / 20"):"Тапай без пауз, чтобы набрать комбо";
+
+ if(cb>=400){
+  $("cmbt").textContent="КОМБО ×3 · "+cb;
+ }
+ else if(cb>=200){
+  $("cmbt").textContent="КОМБО ×2 · "+cb;
+ }
+ else {
+  const next=CB.slice().reverse().find(([count])=>cb<count)?.[0]||40;
+  $("cmbt").textContent=cb
+   ? (m>1?"КОМБО ×"+m+" · ":"Комбо: ")+cb+" / "+next
+   : "Тапай без пауз, чтобы набрать комбо";
+ }
+
  $("cmbt").style.color=m>1?"var(--gold)":"var(--muted)";
- $("cmbf").style.width=cb?Math.max(0,100-(n-cbT)/COMBO_GAP*100)+"%":"0%";
+
+ $("cmbf").style.width=cb
+  ?Math.max(0,100-(n-cbT)/COMBO_GAP*100)+"%"
+  :"0%";
 }
 setInterval(updCombo,80);
 // --- облачное сохранение и код сохранения
@@ -482,7 +547,7 @@ async function gSignIn(){
   if(!await lbInit()){$("cs").textContent="Firebase не подключён.";return}
   const au=LB.au,auth=LB.auth,cu=auth.currentUser;
   let cred=null;
-  if(isNative()){const r=await Capacitor.registerPlugin("FirebaseAuthentication").signInWithGoogle();cred=au.GoogleAuthProvider.credential(r.credential.idToken)}
+  if(isNative()){const r=await Capacitor.Plugins.FirebaseAuthentication.signInWithGoogle();cred=au.GoogleAuthProvider.credential(r.credential.idToken)}
   try{
    if(cred){if(cu&&cu.isAnonymous)await au.linkWithCredential(cu,cred);else await au.signInWithCredential(auth,cred)}
    else{const p=new au.GoogleAuthProvider();if(cu&&cu.isAnonymous)await au.linkWithPopup(cu,p);else await au.signInWithPopup(auth,p)}
@@ -500,7 +565,7 @@ async function gSignIn(){
 async function gOut(){
  try{
   if(LB.ready){
-   if(isNative()){try{await Capacitor.registerPlugin("FirebaseAuthentication").signOut()}catch(e){}}
+   if(isNative()){try{await Capacitor.Plugins.FirebaseAuthentication.signOut()}catch(e){}}
    await LB.au.signOut(LB.auth);await LB.au.signInAnonymously(LB.auth);
    LB.uid=LB.auth.currentUser.uid;LB.srv=null;LB.name=null;
   }
@@ -525,7 +590,6 @@ setInterval(()=>{const u=LB.ready&&LB.auth.currentUser;if(u&&!u.isAnonymous&&Dat
 setTimeout(async()=>{try{if(await lbInit()){renderCloud();cloudSync()}}catch(e){}},1500);
 applyS();
 refresh();
-if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))}
 </script>
 </body>
 </html>
